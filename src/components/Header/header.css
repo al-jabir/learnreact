@@ -1,3 +1,6 @@
+.menu {
+  padding-top: 70px;
+}
 .menu ul {
   display: flex;
 }

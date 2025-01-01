@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './hero.css';
+import Image from '../Image/Image';
+import Button from '../Button/Button';
 
 const Hero = () => {
+  const [count, setCount] = useState(0);
   const [values, setValues] = useState([]);
   const displayLimit = 6;
 
@@ -25,6 +28,11 @@ const Hero = () => {
     fetchData('https://jsonplaceholder.typicode.com/users');
   }, []);
 
+  const ClickHandler = () => {
+    setCount(count + 1);
+    console.log('Button is clicked');
+  };
+
   return (
     <>
       <div className="conatainer">
@@ -35,9 +43,13 @@ const Hero = () => {
             .map(({ id, username, name, phone, address }) => {
               return (
                 <div className="items" key={id}>
+                  <Image />
                   <h5>{username}</h5>
                   <h4>{name} </h4>
                   <span>{address.city}</span>
+                  <div>
+                    <Button ClickHandler={ClickHandler} ct={count} />
+                  </div>
                 </div>
               );
             })}
